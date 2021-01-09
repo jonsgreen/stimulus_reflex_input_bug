@@ -1,0 +1,18 @@
+<div id="<%= dom_id(message) %>">
+  <div>
+    Current Message with dom id <%= dom_id(message) %>: <%= message.comment %>
+  </div>
+  <div>
+    Edit Message #<%= message.id %> with same name attribute of "comment":
+      <%= text_field_tag :comment, message.comment,
+          id: dom_id(message, "update"),
+          data: { reflex: "change->Message#update", id: message.id } %>
+  </div>
+  <div>
+    Edit Message #<%= message.id %> with unique name attribute of "comment_<%= message.id %>":
+      <%= text_field_tag "comment_#{message.id}", message.comment,
+          id: dom_id(message, "update"),
+          data: { reflex: "change->Message#update", id: message.id } %>
+  </div>
+</div>
+<br>
